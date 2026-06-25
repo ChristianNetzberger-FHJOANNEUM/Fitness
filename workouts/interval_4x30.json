@@ -1,0 +1,15 @@
+{
+  "name": "4x30 Intervall",
+  "description": "Aufwaermen, dann 4x 30s @ 200W mit 30s Erholung @ 100W",
+  "steps": [
+    {"duration_s": 120, "target_power_w": 100, "label": "Aufwaermen"},
+    {"duration_s": 30, "target_power_w": 200, "label": "Intervall 1"},
+    {"duration_s": 30, "target_power_w": 100, "label": "Erholung 1"},
+    {"duration_s": 30, "target_power_w": 200, "label": "Intervall 2"},
+    {"duration_s": 30, "target_power_w": 100, "label": "Erholung 2"},
+    {"duration_s": 30, "target_power_w": 200, "label": "Intervall 3"},
+    {"duration_s": 30, "target_power_w": 100, "label": "Erholung 3"},
+    {"duration_s": 30, "target_power_w": 200, "label": "Intervall 4"},
+    {"duration_s": 60, "target_power_w": 80, "label": "Ausfahren"}
+  ]
+}

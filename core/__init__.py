@@ -1,0 +1,1 @@
+"""Domänenlogik ohne UI-Abhängigkeiten."""

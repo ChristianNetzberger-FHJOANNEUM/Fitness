@@ -1,0 +1,21 @@
+{
+  "name": "Grundlage 10 min",
+  "description": "Steady-State @ 120W fuer 10 Minuten",
+  "steps": [
+    {
+      "duration_s": 120,
+      "target_power_w": 80,
+      "label": "Aufwaermen"
+    },
+    {
+      "duration_s": 300,
+      "target_power_w": 120,
+      "label": "Grundlage"
+    },
+    {
+      "duration_s": 120,
+      "target_power_w": 90,
+      "label": "Ausfahren"
+    }
+  ]
+}
