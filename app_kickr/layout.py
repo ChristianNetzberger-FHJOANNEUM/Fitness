@@ -17,6 +17,11 @@ def build_ui(
     on_disconnect,
     on_set_erg,
     on_stop_trainer,
+    on_free_start,
+    on_free_pause_toggle,
+    on_free_stop,
+    on_free_power_up,
+    on_free_power_down,
     on_start_workout,
     on_arm_clap_start,
     on_stop_clap_listen,
@@ -25,6 +30,9 @@ def build_ui(
     on_save_as,
     on_workout_changed,
     load_workout,
+    on_fit_compare,
+    on_fit_archive,
+    fit_files,
 ):
     status_label = ui.label("Bereit").classes("text-caption")
 
@@ -56,10 +64,43 @@ def build_ui(
 
         with ui.card().classes("w-full"):
             ui.label("Strip-Charts (Live)").classes("text-h6")
-            power_plot = ui.line_plot(n=1, limit=400, figsize=(11, 2.2), close=False).classes("w-full")
+            power_plot = ui.line_plot(n=1, limit=1200, figsize=(11, 2.2), close=False).classes("w-full")
             power_plot.with_legend(["Leistung (W)"])
-            cadence_plot = ui.line_plot(n=1, limit=400, figsize=(11, 2.2), close=False).classes("w-full")
+            cadence_plot = ui.line_plot(n=1, limit=1200, figsize=(11, 2.2), close=False).classes("w-full")
             cadence_plot.with_legend(["Kadenz (rpm)"])
+
+        with ui.expansion("Freies Training", icon="directions_bike").classes("w-full shadow-1"):
+            with ui.row().classes("w-full items-start q-col-gutter-md no-wrap"):
+                with ui.column().classes("col-grow"):
+                    with ui.row().classes("w-full items-center q-gutter-lg"):
+                        with ui.column().classes("items-center"):
+                            ui.label("Ziel").classes("text-caption")
+                            free_target_label = ui.label("150").classes("text-h3 text-primary")
+                            ui.label("Watt").classes("text-caption")
+                        with ui.column():
+                            free_status = ui.label("Bereit").classes("text-body1")
+                            free_elapsed_label = ui.label("").classes("text-body2")
+                        free_step = ui.number("Stufe (W)", value=5, min=1, max=50, step=1).classes("w-28")
+                    with ui.row().classes("w-full items-center q-gutter-md q-mt-sm"):
+                        ui.button("Start", on_click=on_free_start).props("color=primary")
+                        free_pause_btn = ui.button("Pause", on_click=on_free_pause_toggle).props("outline")
+                        ui.button("Stop", on_click=on_free_stop).props("outline color=negative")
+                        ui.button("▼", on_click=on_free_power_down).props("outline dense").classes("text-h6")
+                        ui.button("▲", on_click=on_free_power_up).props("outline dense").classes("text-h6")
+                with ui.column().classes("w-72 shrink-0"):
+                    ui.label("Tasten / Fernbedienung").classes("text-subtitle2")
+                    ui.label(
+                        "Logitech-Remote:\n"
+                        "PageUp / PageDown — Leistung + / −\n"
+                        ". (Punkt) — Stop\n"
+                        "Start-Taste — F5 oder Esc (wechselnd)\n"
+                        "  → Start / Pause / Weiter\n"
+                        "Enter — Start / Pause (PC-Tastatur)"
+                    ).classes("text-caption whitespace-pre-line")
+                    free_key_test = ui.switch("Tasten testen (keine Steuerung)")
+                    free_key_debug = ui.label("—").classes(
+                        "text-caption text-grey-8 whitespace-pre-line q-mt-xs"
+                    )
 
         with ui.card().classes("w-full"):
             ui.label("Workout").classes("text-h6")
@@ -107,6 +148,24 @@ def build_ui(
             ui.label("Schritte bearbeiten").classes("text-subtitle2 q-mt-sm")
             step_editor_host = ui.column().classes("w-full")
 
+            ui.label("Fenix FIT Vergleich").classes("text-subtitle2 q-mt-md")
+            ui.label(
+                "FIT-Dateien nach fit/ kopieren (z. B. grundlage_20min.fit oder Garmin-Export). "
+                "«Archivieren» kopiert die gewaehlte Datei nach fit/archived/ mit Datum und Workout im Namen. "
+                "Ohne KICKR-Aufzeichnung: Profil vs FIT. Mit Aufzeichnung: zusaetzlich KICKR vs FIT."
+            ).classes("text-caption")
+            with ui.row().classes("w-full items-end q-gutter-md"):
+                fit_default = next(iter(fit_files), None) if fit_files else None
+                fit_select = ui.select(
+                    fit_files or {},
+                    value=fit_default,
+                    label="FIT-Datei",
+                ).classes("w-80")
+                ui.button("Vergleichen", on_click=lambda: on_fit_compare()).props("outline")
+                ui.button("Archivieren", on_click=lambda: on_fit_archive()).props("outline")
+            fit_compare_status = ui.label("").classes("text-body2")
+            comparison_chart = ui.echart({"title": {"text": "FIT-Vergleich"}}).classes("w-full h-56")
+
     return {
         "status_label": status_label,
         "scan_btn": scan_btn,
@@ -118,6 +177,13 @@ def build_ui(
         "target_power": target_power,
         "power_plot": power_plot,
         "cadence_plot": cadence_plot,
+        "free_target_label": free_target_label,
+        "free_status": free_status,
+        "free_elapsed_label": free_elapsed_label,
+        "free_step": free_step,
+        "free_pause_btn": free_pause_btn,
+        "free_key_test": free_key_test,
+        "free_key_debug": free_key_debug,
         "workout_status": workout_status,
         "clap_threshold": clap_threshold,
         "clap_monitor": clap_monitor,
@@ -128,4 +194,7 @@ def build_ui(
         "workout_chart": workout_chart,
         "workout_table_host": workout_table_host,
         "step_editor_host": step_editor_host,
+        "fit_select": fit_select,
+        "fit_compare_status": fit_compare_status,
+        "comparison_chart": comparison_chart,
     }

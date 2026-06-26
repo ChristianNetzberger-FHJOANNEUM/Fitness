@@ -1,3 +1,4 @@
+from .from_recording import workout_from_free_session
 from .models import Workout, WorkoutStep
 from .runner import WorkoutRunner, WorkoutRunState
 from .store import WorkoutStore
@@ -10,4 +11,5 @@ __all__ = [
     "WorkoutRunState",
     "WorkoutStore",
     "workout_chart_option",
+    "workout_from_free_session",
 ]

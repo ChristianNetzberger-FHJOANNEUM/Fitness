@@ -11,15 +11,20 @@ from core.ftms.models import BikeMetrics
 class MetricsBuffer:
     """Ringpuffer fuer Strip-Charts (Leistung, Kadenz ueber Zeit)."""
 
-    max_points: int = 600
+    max_points: int | None = 600
     times: deque[float] = field(default_factory=deque)
     power_w: deque[float] = field(default_factory=deque)
     cadence_rpm: deque[float] = field(default_factory=deque)
 
     def __post_init__(self) -> None:
-        self.times = deque(maxlen=self.max_points)
-        self.power_w = deque(maxlen=self.max_points)
-        self.cadence_rpm = deque(maxlen=self.max_points)
+        if self.max_points is None:
+            self.times = deque()
+            self.power_w = deque()
+            self.cadence_rpm = deque()
+        else:
+            self.times = deque(maxlen=self.max_points)
+            self.power_w = deque(maxlen=self.max_points)
+            self.cadence_rpm = deque(maxlen=self.max_points)
 
     def clear(self) -> None:
         self.times.clear()
@@ -45,6 +50,8 @@ class MetricsBuffer:
 class LiveSession:
     buffer: MetricsBuffer = field(default_factory=MetricsBuffer)
     _started_at: float | None = None
+    _paused_at: float | None = None
+    _paused_total_s: float = 0.0
     _last_pushed_index: int = 0
 
     @property
@@ -52,25 +59,51 @@ class LiveSession:
         return self._started_at is not None
 
     @property
+    def paused(self) -> bool:
+        return self._paused_at is not None
+
+    @property
     def elapsed_s(self) -> float:
         if self._started_at is None:
             return 0.0
-        return time.time() - self._started_at
+        now = time.time()
+        elapsed = now - self._started_at - self._paused_total_s
+        if self._paused_at is not None:
+            elapsed -= now - self._paused_at
+        return max(0.0, elapsed)
 
-    def start(self) -> None:
+    def start(self, *, unlimited: bool = False) -> None:
         self.reset()
+        if unlimited:
+            self.buffer = MetricsBuffer(max_points=None)
+        else:
+            self.buffer = MetricsBuffer(max_points=600)
         self._started_at = time.time()
+
+    def pause(self) -> None:
+        if self._started_at is None or self._paused_at is not None:
+            return
+        self._paused_at = time.time()
+
+    def resume(self) -> None:
+        if self._paused_at is None:
+            return
+        self._paused_total_s += time.time() - self._paused_at
+        self._paused_at = None
 
     def stop(self) -> None:
         self._started_at = None
+        self._paused_at = None
 
     def reset(self) -> None:
         self._started_at = None
+        self._paused_at = None
+        self._paused_total_s = 0.0
         self._last_pushed_index = 0
         self.buffer.clear()
 
     def on_metrics(self, metrics: BikeMetrics) -> None:
-        if self._started_at is None:
+        if self._started_at is None or self._paused_at is not None:
             return
         self.buffer.append(self.elapsed_s, metrics)
 

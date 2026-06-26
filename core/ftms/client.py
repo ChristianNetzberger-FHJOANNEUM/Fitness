@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import asyncio
 import struct
@@ -131,7 +131,7 @@ class FtmsClient:
         await self.disconnect()
         self._device = await BleakScanner.find_device_by_address(address, timeout=15.0)
         if self._device is None:
-            raise FtmsError(f"Gerät nicht gefunden: {address}")
+            raise FtmsError(f"Ger├ñt nicht gefunden: {address}")
 
         self._client = BleakClient(self._device)
         await self._client.connect()
@@ -167,6 +167,9 @@ class FtmsClient:
 
     async def stop(self) -> None:
         await self._write_control(bytes([STOP_OR_PAUSE, 0x01]))
+
+    async def pause_trainer(self) -> None:
+        await self._write_control(bytes([STOP_OR_PAUSE, 0x02]))
 
     async def set_target_power(self, watts: int) -> None:
         watts = max(0, min(watts, 2000))
