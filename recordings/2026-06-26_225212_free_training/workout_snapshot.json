@@ -1,0 +1,141 @@
+{
+  "name": "frei_20260626_2309",
+  "description": "Aus freiem Training erzeugt",
+  "steps": [
+    {
+      "duration_s": 6,
+      "target_power_w": 0,
+      "label": "0 W"
+    },
+    {
+      "duration_s": 117,
+      "target_power_w": 80,
+      "label": "80 W"
+    },
+    {
+      "duration_s": 5,
+      "target_power_w": 85,
+      "label": "85 W"
+    },
+    {
+      "duration_s": 114,
+      "target_power_w": 120,
+      "label": "120 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 125,
+      "label": "125 W"
+    },
+    {
+      "duration_s": 54,
+      "target_power_w": 180,
+      "label": "180 W"
+    },
+    {
+      "duration_s": 5,
+      "target_power_w": 170,
+      "label": "170 W"
+    },
+    {
+      "duration_s": 55,
+      "target_power_w": 120,
+      "label": "120 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 125,
+      "label": "125 W"
+    },
+    {
+      "duration_s": 5,
+      "target_power_w": 195,
+      "label": "195 W"
+    },
+    {
+      "duration_s": 49,
+      "target_power_w": 200,
+      "label": "200 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 185,
+      "label": "185 W"
+    },
+    {
+      "duration_s": 54,
+      "target_power_w": 120,
+      "label": "120 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 125,
+      "label": "125 W"
+    },
+    {
+      "duration_s": 54,
+      "target_power_w": 220,
+      "label": "220 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 215,
+      "label": "215 W"
+    },
+    {
+      "duration_s": 54,
+      "target_power_w": 120,
+      "label": "120 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 125,
+      "label": "125 W"
+    },
+    {
+      "duration_s": 54,
+      "target_power_w": 200,
+      "label": "200 W"
+    },
+    {
+      "duration_s": 5,
+      "target_power_w": 185,
+      "label": "185 W"
+    },
+    {
+      "duration_s": 55,
+      "target_power_w": 120,
+      "label": "120 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 125,
+      "label": "125 W"
+    },
+    {
+      "duration_s": 54,
+      "target_power_w": 180,
+      "label": "180 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 175,
+      "label": "175 W"
+    },
+    {
+      "duration_s": 114,
+      "target_power_w": 120,
+      "label": "120 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 115,
+      "label": "115 W"
+    },
+    {
+      "duration_s": 55,
+      "target_power_w": 90,
+      "label": "90 W"
+    }
+  ]
+}

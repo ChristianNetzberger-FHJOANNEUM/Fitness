@@ -1,7 +1,9 @@
 ﻿from __future__ import annotations
 
 import asyncio
+import logging
 import struct
+import warnings
 from collections.abc import Callable
 
 from bleak import BleakClient, BleakScanner
@@ -20,6 +22,15 @@ from .constants import (
 )
 from .models import BikeMetrics, DiscoveredTrainer
 from .winrt_setup import prepare_winrt_for_bleak
+
+
+_logger = logging.getLogger(__name__)
+
+
+def _device_rssi(device: BLEDevice) -> int | None:
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", FutureWarning)
+        return getattr(device, "rssi", None)
 
 
 class FtmsError(Exception):
@@ -80,6 +91,7 @@ class FtmsClient:
         self._control_response: asyncio.Future[bytes] | None = None
         self._metrics = BikeMetrics()
         self._on_metrics: Callable[[BikeMetrics], None] | None = None
+        self._on_disconnected: Callable[[], None] | None = None
         self._connected = False
         self._has_control = False
         self._control_lock = asyncio.Lock()
@@ -89,6 +101,15 @@ class FtmsClient:
     @property
     def connected(self) -> bool:
         return self._connected
+
+    @property
+    def link_up(self) -> bool:
+        if not self._connected or self._client is None:
+            return False
+        try:
+            return bool(self._client.is_connected)
+        except Exception:
+            return False
 
     @property
     def has_control(self) -> bool:
@@ -107,6 +128,21 @@ class FtmsClient:
     def set_metrics_callback(self, callback: Callable[[BikeMetrics], None] | None) -> None:
         self._on_metrics = callback
 
+    def set_disconnected_callback(self, callback: Callable[[], None] | None) -> None:
+        self._on_disconnected = callback
+
+    def _handle_ble_disconnect(self, _client: BleakClient) -> None:
+        was_connected = self._connected
+        self._connected = False
+        self._has_control = False
+        if not was_connected or self._on_disconnected is None:
+            return
+        loop = self._loop
+        if loop is not None and loop.is_running():
+            loop.call_soon_threadsafe(self._on_disconnected)
+        else:
+            self._on_disconnected()
+
     async def scan(self, timeout: float = 8.0) -> list[DiscoveredTrainer]:
         prepare_winrt_for_bleak()
         devices = await BleakScanner.discover(timeout=timeout, service_uuids=[FTMS_SERVICE])
@@ -120,7 +156,7 @@ class FtmsClient:
                 DiscoveredTrainer(
                     name=device.name or "(unbekannt)",
                     address=device.address,
-                    rssi=getattr(device, "rssi", None),
+                    rssi=_device_rssi(device),
                 )
             )
         trainers.sort(key=lambda t: t.rssi if t.rssi is not None else -999, reverse=True)
@@ -133,15 +169,31 @@ class FtmsClient:
         if self._device is None:
             raise FtmsError(f"Ger├ñt nicht gefunden: {address}")
 
-        self._client = BleakClient(self._device)
-        await self._client.connect()
+        self._loop = asyncio.get_running_loop()
+        self._client = BleakClient(
+            self._device,
+            timeout=30.0,
+            disconnected_callback=self._handle_ble_disconnect,
+            winrt={"use_cached_services": False},
+        )
+        try:
+            await self._client.connect(timeout=30.0)
+        except Exception as exc:
+            await self.disconnect()
+            msg = str(exc).strip() or type(exc).__name__
+            raise FtmsError(f"BLE-Verbindung fehlgeschlagen: {msg}") from exc
         if not self._client.is_connected:
+            await self.disconnect()
             raise FtmsError("BLE-Verbindung fehlgeschlagen")
 
         await self._client.start_notify(INDOOR_BIKE_DATA, self._on_bike_data)
         await self._client.start_notify(FTMS_CONTROL_POINT, self._on_control_point)
-        self._loop = asyncio.get_running_loop()
         self._connected = True
+        self._has_control = False
+        _logger.info("FTMS verbunden: %s", self.device_name)
+
+    def mark_disconnected(self) -> None:
+        self._connected = False
         self._has_control = False
 
     async def disconnect(self) -> None:
@@ -153,6 +205,8 @@ class FtmsClient:
             try:
                 if self._client.is_connected:
                     await self._client.disconnect()
+            except Exception as exc:
+                _logger.warning("FTMS disconnect: %s", exc)
             finally:
                 self._client = None
         self._device = None
@@ -184,10 +238,19 @@ class FtmsClient:
         await self.start()
         await self.set_target_power(watts)
 
-    def _on_bike_data(self, _handle: int, data: bytearray) -> None:
-        self._metrics = parse_indoor_bike_data(bytes(data))
+    def _dispatch_metrics(self) -> None:
         if self._on_metrics is not None:
             self._on_metrics(self._metrics)
+
+    def _on_bike_data(self, _handle: int, data: bytearray) -> None:
+        self._metrics = parse_indoor_bike_data(bytes(data))
+        if self._on_metrics is None:
+            return
+        loop = self._loop
+        if loop is not None and loop.is_running():
+            loop.call_soon_threadsafe(self._dispatch_metrics)
+        else:
+            self._dispatch_metrics()
 
     def _on_control_point(self, _handle: int, data: bytearray) -> None:
         if self._control_response is None or self._control_response.done():

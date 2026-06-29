@@ -15,14 +15,18 @@ class RecordedSample:
     power_w: float
     cadence_rpm: float
     target_power_w: int | None = None
+    heart_rate_bpm: int | None = None
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        row: dict[str, Any] = {
             "elapsed_s": round(self.elapsed_s, 3),
             "power_w": self.power_w,
             "cadence_rpm": round(self.cadence_rpm, 1),
             "target_power_w": self.target_power_w,
         }
+        if self.heart_rate_bpm is not None:
+            row["heart_rate_bpm"] = self.heart_rate_bpm
+        return row
 
 
 @dataclass
@@ -35,6 +39,8 @@ class SessionRecorder:
     trigger: str = ""
     trainer_name: str = ""
     trainer_address: str = ""
+    hr_sensor_name: str = ""
+    hr_sensor_address: str = ""
     _started_at_mono: float | None = None
     _paused_at_mono: float | None = None
     _paused_total_s: float = 0.0
@@ -73,6 +79,8 @@ class SessionRecorder:
         trigger: str,
         trainer_name: str = "",
         trainer_address: str = "",
+        hr_sensor_name: str = "",
+        hr_sensor_address: str = "",
     ) -> None:
         self.samples.clear()
         self.workout_id = workout_id
@@ -80,6 +88,8 @@ class SessionRecorder:
         self.trigger = trigger
         self.trainer_name = trainer_name
         self.trainer_address = trainer_address
+        self.hr_sensor_name = hr_sensor_name
+        self.hr_sensor_address = hr_sensor_address
         self.recorded_at = datetime.now().astimezone()
         self.ended_at = None
         self._paused_at_mono = None
@@ -108,7 +118,12 @@ class SessionRecorder:
         self.recorded_at = None
         self.ended_at = None
 
-    def append(self, metrics: BikeMetrics, target_power_w: int | None = None) -> None:
+    def append(
+        self,
+        metrics: BikeMetrics,
+        target_power_w: int | None = None,
+        heart_rate_bpm: int | None = None,
+    ) -> None:
         if not self.active or self._paused_at_mono is not None:
             return
         if self._started_at_mono is None:
@@ -120,6 +135,7 @@ class SessionRecorder:
                 power_w=float(metrics.power_w) if metrics.power_w is not None else 0.0,
                 cadence_rpm=float(metrics.cadence_rpm) if metrics.cadence_rpm is not None else 0.0,
                 target_power_w=target_power_w,
+                heart_rate_bpm=heart_rate_bpm,
             )
         )
 
@@ -128,7 +144,7 @@ class SessionRecorder:
             raise ValueError("Recorder wurde nicht gestartet")
         ended = self.ended_at or datetime.now().astimezone()
         return {
-            "format_version": 1,
+            "format_version": 2,
             "recorded_at": self.recorded_at.isoformat(),
             "ended_at": ended.isoformat(),
             "duration_s": round(self.duration_s, 3),
@@ -138,6 +154,10 @@ class SessionRecorder:
             "trainer": {
                 "name": self.trainer_name,
                 "address": self.trainer_address,
+            },
+            "heart_rate_sensor": {
+                "name": self.hr_sensor_name,
+                "address": self.hr_sensor_address,
             },
             "samples": [s.to_dict() for s in self.samples],
         }

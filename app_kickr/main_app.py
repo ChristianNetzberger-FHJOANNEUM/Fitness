@@ -3,10 +3,14 @@
 from __future__ import annotations
 
 import asyncio
+import logging
+import time
 from datetime import datetime
 from pathlib import Path
 
-from nicegui import background_tasks, ui
+from nicegui import app, background_tasks, ui
+
+from app_kickr.log_config import install_asyncio_exception_handler, setup_logging
 
 from app_kickr.connection import (
     connect_trainer,
@@ -15,30 +19,43 @@ from app_kickr.connection import (
     set_manual_erg,
     stop_trainer,
 )
+from app_kickr.hr_connection import (
+    connect_hr_sensor,
+    disconnect_hr_sensor,
+    scan_hr_sensors,
+)
 from app_kickr.fit_ui import show_fit_comparison
 from app_kickr.keyboard_remote import KeyboardRemote
 from app_kickr.layout import build_ui
 from app_kickr.port_free import ensure_port_free
+from app_kickr.strip_charts import StripChartPeakTracker, format_elapsed_hms
 from app_kickr.workout_ui import (
     build_step_editor,
     refresh_workout_chart,
     refresh_workout_summary,
     update_workout_progress_line,
 )
-from app_kickr.ui_safe import client_alive, with_alive_client
+from app_kickr.ui_safe import client_alive, safe_notify, with_alive_client
 from core.ftms import BikeMetrics, FtmsClient
 from core.ftms.client import FtmsError
 from core.fit import FitStore
+from core.hr import HrClient, HrMetrics
+from core.hr.client import HrError
 from core.session import LiveSession, RecordingStore, SessionRecorder
 from core.training import FreeTrainingController, FreeTrainingPhase
 from core.workout import Workout, WorkoutRunner, WorkoutRunState, WorkoutStore, workout_from_free_session
 
 DEFAULT_PORT = 8080
+_logger = logging.getLogger("app_kickr")
 
 
 def run(port: int = DEFAULT_PORT) -> None:
+    setup_logging()
     ensure_port_free(port)
+    ble_lock = asyncio.Lock()
+    poll_tick = {"n": 0}
     client = FtmsClient()
+    hr_client = HrClient()
     session = LiveSession()
     recorder = SessionRecorder()
     recording_store = RecordingStore()
@@ -48,6 +65,8 @@ def run(port: int = DEFAULT_PORT) -> None:
     free_controller = FreeTrainingController(client)
 
     latest_metrics = BikeMetrics()
+    latest_hr_bpm: int | None = None
+    latest_hr_metrics = HrMetrics()
     workout_ids = workout_store.list_ids()
     current_workout_id = workout_ids[0] if workout_ids else ""
     workout = workout_store.load(current_workout_id) if current_workout_id else Workout(name="Leer", steps=[])
@@ -56,6 +75,34 @@ def run(port: int = DEFAULT_PORT) -> None:
     step_sync: dict = {"fn": lambda: None}
     last_chart_progress_s: float | None = None
     key_debug_lines: list[str] = []
+    strip_peaks = StripChartPeakTracker()
+    last_trainer_packet_at: float | None = None
+    last_hr_packet_at: float | None = None
+
+    def clear_strip_charts() -> None:
+        strip_peaks.reset()
+        if refs.get("power_plot") is not None:
+            refs["power_plot"].clear()
+            refs["cadence_plot"].clear()
+            if refs.get("hr_plot") is not None:
+                refs["hr_plot"].clear()
+
+    def hr_recorder_fields() -> dict[str, str]:
+        if not hr_client.connected:
+            return {"hr_sensor_name": "", "hr_sensor_address": ""}
+        address = ""
+        if refs.get("hr_select") is not None:
+            address = refs["hr_select"].value or ""
+        return {
+            "hr_sensor_name": hr_client.device_name,
+            "hr_sensor_address": address,
+        }
+
+    def update_session_clock() -> None:
+        clock = refs.get("free_time_clock")
+        if clock is None:
+            return
+        clock.set_text(format_elapsed_hms(session.display_elapsed_s))
 
     def refresh_free_ui() -> None:
         if not refs:
@@ -69,10 +116,7 @@ def run(port: int = DEFAULT_PORT) -> None:
             FreeTrainingPhase.PAUSED: "Pause",
         }
         refs["free_status"].set_text(status_map.get(phase, str(phase)))
-        if phase in (FreeTrainingPhase.RUNNING, FreeTrainingPhase.PAUSED):
-            refs["free_elapsed_label"].set_text(f"Zeit: {session.elapsed_s:.0f} s")
-        else:
-            refs["free_elapsed_label"].set_text("")
+        update_session_clock()
         if phase == FreeTrainingPhase.RUNNING:
             refs["workout_target_label"].set_text(f"Frei: Ziel {watts} W")
         elif not workout_runner.state.running:
@@ -185,14 +229,14 @@ def run(port: int = DEFAULT_PORT) -> None:
         if phase == FreeTrainingPhase.IDLE:
             free_controller.state.target_power_w = int(refs["target_power"].value or 150)
             session.start(unlimited=True)
-            refs["power_plot"].clear()
-            refs["cadence_plot"].clear()
+            clear_strip_charts()
             recorder.start(
                 workout_id="free_training",
                 workout=Workout(name="Freies Training", steps=[]),
                 trigger="free",
                 trainer_name=client.device_name,
                 trainer_address=refs["device_select"].value or "",
+                **hr_recorder_fields(),
             )
         try:
             await free_controller.start()
@@ -302,7 +346,48 @@ def run(port: int = DEFAULT_PORT) -> None:
         free_workout_dialog.close()
 
     def set_status(msg: str) -> None:
-        refs["status_label"].set_text(msg)
+        label = refs.get("status_label")
+        if label is None or not client_alive(label):
+            return
+        try:
+            label.set_text(msg)
+        except Exception:
+            _logger.debug("set_status fehlgeschlagen", exc_info=True)
+
+    def on_trainer_ble_lost() -> None:
+        nonlocal last_trainer_packet_at
+        last_trainer_packet_at = None
+        name = client.device_name or "KICKR"
+        _logger.warning("FTMS BLE getrennt: %s", name)
+        if free_controller.state.phase == FreeTrainingPhase.RUNNING:
+            session.pause()
+            free_controller.state.phase = FreeTrainingPhase.PAUSED
+            recorder.pause()
+        set_status(f"KICKR-Verbindung verloren: {name}")
+        safe_notify(
+            "KICKR BLE unerwartet getrennt — Kurven bleiben erhalten. Erneut verbinden.",
+            type="warning",
+            timeout=12,
+        )
+        refresh_free_ui()
+
+    def on_hr_ble_lost() -> None:
+        nonlocal last_hr_packet_at, latest_hr_bpm, latest_hr_metrics
+        last_hr_packet_at = None
+        latest_hr_bpm = None
+        latest_hr_metrics = HrMetrics()
+        name = hr_client.device_name or "HF-Sensor"
+        _logger.warning("HF BLE getrennt: %s", name)
+        set_status(f"HF-Verbindung verloren: {name}")
+        try:
+            refresh_hr_label(HrMetrics())
+        except Exception:
+            _logger.debug("refresh_hr_label nach HF-Trennung", exc_info=True)
+        safe_notify(
+            "HF-Sensor BLE unerwartet getrennt — erneut verbinden.",
+            type="warning",
+            timeout=12,
+        )
 
     def refresh_fit_select() -> None:
         labels = fit_store.list_labels()
@@ -375,6 +460,29 @@ def run(port: int = DEFAULT_PORT) -> None:
         except Exception as exc:
             ui.notify(f"Archivieren fehlgeschlagen: {exc}", type="negative")
 
+    def refresh_hr_label(metrics: HrMetrics) -> None:
+        if not refs.get("hr_label"):
+            return
+        if metrics.bpm is not None:
+            refs["hr_label"].set_text(str(metrics.bpm))
+        elif hr_client.connected and hr_client.notification_count > 0:
+            refs["hr_label"].set_text("…")
+        else:
+            refs["hr_label"].set_text("—")
+        contact = refs.get("hr_contact_label")
+        if contact is None:
+            return
+        if metrics.sensor_contact_supported and metrics.contact_detected is False:
+            contact.set_text("Gurt pruefen (kein Kontakt / nicht nass)")
+        elif metrics.sensor_contact_supported and metrics.contact_detected:
+            contact.set_text("Kontakt OK")
+        elif hr_client.connected and hr_client.notification_count == 0:
+            contact.set_text("Warte auf HF-Signal …")
+        elif hr_client.connected and metrics.bpm is None:
+            contact.set_text(f"BLE aktiv ({hr_client.notification_count} Pakete)")
+        else:
+            contact.set_text("")
+
     def refresh_live_labels(metrics: BikeMetrics) -> None:
         refs["power_label"].set_text(f"{metrics.power_w}" if metrics.power_w is not None else "—")
         refs["cadence_label"].set_text(
@@ -411,17 +519,36 @@ def run(port: int = DEFAULT_PORT) -> None:
         set_status(f"Workout geladen: {workout.name} ({workout.total_duration_s // 60} min)")
 
     def on_ble_metrics(metrics: BikeMetrics) -> None:
-        nonlocal latest_metrics
-        latest_metrics = metrics
-        session.on_metrics(metrics)
-        target_w: int | None = None
-        if free_controller.state.phase == FreeTrainingPhase.RUNNING:
-            target_w = free_controller.state.target_power_w
-        elif workout_runner.state.running and workout_runner.state.current_step:
-            target_w = workout_runner.state.current_step.target_power_w
-        recorder.append(metrics, target_power_w=target_w)
+        nonlocal latest_metrics, last_trainer_packet_at
+        try:
+            last_trainer_packet_at = time.monotonic()
+            latest_metrics = metrics
+            session.on_metrics(metrics)
+            target_w: int | None = None
+            if free_controller.state.phase == FreeTrainingPhase.RUNNING:
+                target_w = free_controller.state.target_power_w
+            elif workout_runner.state.running and workout_runner.state.current_step:
+                target_w = workout_runner.state.current_step.target_power_w
+            recorder.append(metrics, target_power_w=target_w, heart_rate_bpm=latest_hr_bpm)
+        except Exception:
+            _logger.exception("on_ble_metrics")
+
+    def on_hr_metrics(metrics: HrMetrics) -> None:
+        nonlocal latest_hr_bpm, latest_hr_metrics, last_hr_packet_at
+        try:
+            last_hr_packet_at = time.monotonic()
+            latest_hr_metrics = metrics
+            if metrics.bpm is not None:
+                latest_hr_bpm = metrics.bpm
+                if session.active and not session.paused:
+                    session.on_hr(metrics.bpm)
+        except Exception:
+            _logger.exception("on_hr_metrics")
 
     client.set_metrics_callback(on_ble_metrics)
+    client.set_disconnected_callback(on_trainer_ble_lost)
+    hr_client.set_metrics_callback(on_hr_metrics)
+    hr_client.set_disconnected_callback(on_hr_ble_lost)
 
     workout_runner.set_state_callback(lambda _state: None)
 
@@ -466,13 +593,60 @@ def run(port: int = DEFAULT_PORT) -> None:
         refs["scan_btn"].disable()
         set_status("Scanne nach FTMS-Geraeten …")
         try:
-            _, options = await scan_trainers(client, set_status)
+            async with ble_lock:
+                _, options = await scan_trainers(client, set_status)
             refs["device_select"].set_options(options, value=options and next(iter(options)))
             set_status(f"{len(options)} Geraet(e) gefunden.")
         except Exception as exc:
+            _logger.exception("FTMS-Scan")
             set_status(f"Scan fehlgeschlagen: {exc}")
         finally:
             refs["scan_btn"].enable()
+
+    async def do_scan_hr() -> None:
+        refs["scan_hr_btn"].disable()
+        set_status("Scanne nach HF-Sensoren …")
+        try:
+            async with ble_lock:
+                _, options = await scan_hr_sensors(hr_client, set_status)
+            refs["hr_select"].set_options(options, value=options and next(iter(options)))
+            set_status(f"{len(options)} HF-Sensor(en) gefunden.")
+        except Exception as exc:
+            _logger.exception("HF-Scan")
+            set_status(f"HF-Scan fehlgeschlagen: {exc}")
+        finally:
+            refs["scan_hr_btn"].enable()
+
+    async def do_connect_hr() -> None:
+        address = refs["hr_select"].value
+        if not address:
+            safe_notify("Bitte zuerst HF-Sensor scannen.", type="warning")
+            return
+        refs["connect_hr_btn"].disable()
+        set_status(f"Verbinde HF mit {address} …")
+        try:
+            async with ble_lock:
+                await connect_hr_sensor(
+                    hr_client, address, set_status,
+                )
+        except HrError as exc:
+            _logger.warning("HF-Verbindung: %s", exc)
+            set_status(str(exc))
+            safe_notify(str(exc), type="negative")
+        except Exception as exc:
+            _logger.exception("HF-Verbindung")
+            set_status(f"HF-Verbindung fehlgeschlagen: {exc}")
+            safe_notify(str(exc), type="negative")
+        finally:
+            refs["connect_hr_btn"].enable()
+
+    async def do_disconnect_hr() -> None:
+        nonlocal latest_hr_bpm, latest_hr_metrics
+        await disconnect_hr_sensor(
+            hr_client, refs.get("hr_plot"), refresh_hr_label, set_status,
+        )
+        latest_hr_bpm = None
+        latest_hr_metrics = HrMetrics()
 
     async def do_connect() -> None:
         address = refs["device_select"].value
@@ -482,22 +656,29 @@ def run(port: int = DEFAULT_PORT) -> None:
         refs["connect_btn"].disable()
         set_status(f"Verbinde mit {address} …")
         try:
-            await connect_trainer(
-                client, session, address,
-                refs["power_plot"], refs["cadence_plot"],
-                set_status, refresh_live_labels,
-            )
+            async with ble_lock:
+                await connect_trainer(
+                    client, session, address,
+                    refs["power_plot"], refs["cadence_plot"],
+                    set_status, refresh_live_labels,
+                )
+            strip_peaks.reset()
+            if refs.get("hr_plot") is not None:
+                refs["hr_plot"].clear()
         except FtmsError as exc:
+            _logger.warning("KICKR-Verbindung: %s", exc)
             set_status(str(exc))
-            ui.notify(str(exc), type="negative")
+            safe_notify(str(exc), type="negative")
         except Exception as exc:
+            _logger.exception("KICKR-Verbindung")
             set_status(f"Verbindung fehlgeschlagen: {exc}")
-            ui.notify(str(exc), type="negative")
+            safe_notify(str(exc), type="negative")
         finally:
             refs["connect_btn"].enable()
 
     async def do_disconnect() -> None:
         await cancel_free_training()
+        strip_peaks.reset()
         await disconnect_trainer(
             client, session, refs["power_plot"], refs["cadence_plot"],
             refresh_live_labels, set_status, cancel_workout,
@@ -536,8 +717,7 @@ def run(port: int = DEFAULT_PORT) -> None:
         if sync_session:
             session.reset()
             session.start()
-            refs["power_plot"].clear()
-            refs["cadence_plot"].clear()
+            clear_strip_charts()
         elif not session.active:
             session.start()
 
@@ -547,6 +727,7 @@ def run(port: int = DEFAULT_PORT) -> None:
             trigger=trigger,
             trainer_name=client.device_name if client.connected else "",
             trainer_address=refs["device_select"].value or "",
+            **hr_recorder_fields(),
         )
 
         first_w = workout.steps[0].target_power_w
@@ -649,19 +830,53 @@ def run(port: int = DEFAULT_PORT) -> None:
         ui.notify(f"Gespeichert: user/{slug}", type="positive")
 
     def poll_live_ui() -> None:
-        if not client_alive(refs.get("power_label")):
-            return
-        refresh_live_labels(latest_metrics)
-        refresh_workout_progress_ui()
-        if _free_training_busy():
-            refresh_free_ui()
-        drained = session.drain_for_plot()
-        if drained is None:
-            return
-        times, power, cadence = drained
-        if times and client_alive(refs.get("power_plot")):
-            refs["power_plot"].push(times, [power], x_limits="auto", y_limits="auto")
-            refs["cadence_plot"].push(times, [cadence], x_limits="auto", y_limits="auto")
+        try:
+            poll_tick["n"] += 1
+            if poll_tick["n"] % 75 == 0:
+                _logger.info(
+                    "alive — FTMS %s link=%s | HF %s link=%s | browser=%s",
+                    client.connected,
+                    client.link_up,
+                    hr_client.connected,
+                    hr_client.link_up,
+                    client_alive(refs.get("power_label")),
+                )
+            if client.connected and not client.link_up:
+                _logger.warning("FTMS-Link tot (Health-Check)")
+                client.mark_disconnected()
+                on_trainer_ble_lost()
+            elif hr_client.connected and not hr_client.link_up:
+                _logger.warning("HF-Link tot (Health-Check)")
+                hr_client.mark_disconnected()
+                on_hr_ble_lost()
+            if not client_alive(refs.get("power_label")):
+                return
+            refresh_live_labels(latest_metrics)
+            refresh_hr_label(latest_hr_metrics)
+            refresh_workout_progress_ui()
+            if _free_training_busy():
+                refresh_free_ui()
+            else:
+                update_session_clock()
+            drained = session.drain_for_plot()
+            if drained is not None:
+                times, power, cadence = drained
+                if times and client_alive(refs.get("power_plot")):
+                    refs["power_plot"].push(
+                        times, [power], x_limits="auto", y_limits=strip_peaks.power_ylim(power),
+                    )
+                    refs["cadence_plot"].push(
+                        times, [cadence], x_limits="auto", y_limits=strip_peaks.cadence_ylim(cadence),
+                    )
+            hr_drained = session.drain_hr_for_plot()
+            if hr_drained is not None:
+                hr_times, hr_values = hr_drained
+                if hr_times and client_alive(refs.get("hr_plot")):
+                    refs["hr_plot"].push(
+                        hr_times, [hr_values], x_limits="auto", y_limits=strip_peaks.hr_ylim(hr_values),
+                    )
+        except Exception:
+            _logger.exception("poll_live_ui")
 
     ui.page_title("KICKR FTMS")
     with ui.header().classes("items-center justify-between"):
@@ -669,7 +884,9 @@ def run(port: int = DEFAULT_PORT) -> None:
 
     refs.update(build_ui(
         workout, workout_ids, current_workout_id,
-        do_scan, do_connect, do_disconnect, do_set_erg, do_stop_trainer,
+        do_scan, do_connect, do_disconnect,
+        do_scan_hr, do_connect_hr, do_disconnect_hr,
+        do_set_erg, do_stop_trainer,
         do_free_start, do_free_pause_toggle, do_free_stop, do_free_power_up, do_free_power_down,
         do_start_workout, do_arm_clap_start, do_stop_clap_listen,
         do_stop_workout, do_save_workout, do_save_workout_as,
@@ -730,5 +947,15 @@ def run(port: int = DEFAULT_PORT) -> None:
             ui.button("Speichern", on_click=confirm_free_workout_save).props("color=primary")
 
     refresh_free_ui()
+
+    @app.on_connect
+    async def _browser_connected() -> None:
+        _logger.info("Browser verbunden")
+
+    @app.on_disconnect
+    async def _browser_disconnected() -> None:
+        _logger.warning("Browser getrennt — Seite neu laden, Server laeuft weiter")
+
+    ui.timer(0.1, install_asyncio_exception_handler, once=True)
     ui.timer(0.4, poll_live_ui)
     ui.run(title="KICKR FTMS", port=port, reload=False)

@@ -1,0 +1,2133 @@
+{
+  "format_version": 2,
+  "recorded_at": "2026-06-29T19:33:24.112833+02:00",
+  "ended_at": "2026-06-29T19:38:45.128840+02:00",
+  "duration_s": 321.016,
+  "trigger": "free",
+  "workout_id": "free_training",
+  "workout_name": "Freies Training",
+  "trainer": {
+    "name": "KICKR CORE 2AAD",
+    "address": "ED:F2:46:32:AF:80"
+  },
+  "heart_rate_sensor": {
+    "name": "24:AC:AC:1C:35:0D",
+    "address": "24:AC:AC:1C:35:0D"
+  },
+  "samples": [
+    {
+      "elapsed_s": 0.563,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 62
+    },
+    {
+      "elapsed_s": 1.532,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 62
+    },
+    {
+      "elapsed_s": 2.516,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 62
+    },
+    {
+      "elapsed_s": 3.578,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 63
+    },
+    {
+      "elapsed_s": 4.563,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 63
+    },
+    {
+      "elapsed_s": 5.532,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 63
+    },
+    {
+      "elapsed_s": 6.594,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 63
+    },
+    {
+      "elapsed_s": 7.578,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 63
+    },
+    {
+      "elapsed_s": 8.547,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 63
+    },
+    {
+      "elapsed_s": 9.61,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 64
+    },
+    {
+      "elapsed_s": 10.5,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 64
+    },
+    {
+      "elapsed_s": 11.578,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 64
+    },
+    {
+      "elapsed_s": 12.547,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 65
+    },
+    {
+      "elapsed_s": 13.532,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 65
+    },
+    {
+      "elapsed_s": 14.5,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 66
+    },
+    {
+      "elapsed_s": 15.578,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 66
+    },
+    {
+      "elapsed_s": 16.547,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 67
+    },
+    {
+      "elapsed_s": 17.516,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 67
+    },
+    {
+      "elapsed_s": 18.594,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 67
+    },
+    {
+      "elapsed_s": 19.563,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 68
+    },
+    {
+      "elapsed_s": 20.547,
+      "power_w": 1.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 69
+    },
+    {
+      "elapsed_s": 21.532,
+      "power_w": 1.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 69
+    },
+    {
+      "elapsed_s": 22.5,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 70
+    },
+    {
+      "elapsed_s": 23.578,
+      "power_w": 7.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 70
+    },
+    {
+      "elapsed_s": 24.547,
+      "power_w": 7.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 71
+    },
+    {
+      "elapsed_s": 25.516,
+      "power_w": 12.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 71
+    },
+    {
+      "elapsed_s": 26.5,
+      "power_w": 12.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 71
+    },
+    {
+      "elapsed_s": 27.563,
+      "power_w": 13.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 71
+    },
+    {
+      "elapsed_s": 28.532,
+      "power_w": 14.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 71
+    },
+    {
+      "elapsed_s": 29.516,
+      "power_w": 14.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 72
+    },
+    {
+      "elapsed_s": 30.594,
+      "power_w": 8.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 72
+    },
+    {
+      "elapsed_s": 31.563,
+      "power_w": 1.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 72
+    },
+    {
+      "elapsed_s": 32.532,
+      "power_w": 1.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 72
+    },
+    {
+      "elapsed_s": 33.516,
+      "power_w": 2.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 72
+    },
+    {
+      "elapsed_s": 34.578,
+      "power_w": 2.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 72
+    },
+    {
+      "elapsed_s": 35.563,
+      "power_w": 2.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 72
+    },
+    {
+      "elapsed_s": 36.532,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 73
+    },
+    {
+      "elapsed_s": 37.516,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 73
+    },
+    {
+      "elapsed_s": 38.578,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 74
+    },
+    {
+      "elapsed_s": 39.563,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 145,
+      "heart_rate_bpm": 74
+    },
+    {
+      "elapsed_s": 40.532,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 135,
+      "heart_rate_bpm": 75
+    },
+    {
+      "elapsed_s": 41.61,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 125,
+      "heart_rate_bpm": 75
+    },
+    {
+      "elapsed_s": 42.578,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 115,
+      "heart_rate_bpm": 75
+    },
+    {
+      "elapsed_s": 43.563,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 105,
+      "heart_rate_bpm": 75
+    },
+    {
+      "elapsed_s": 44.532,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 74
+    },
+    {
+      "elapsed_s": 45.61,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 95,
+      "heart_rate_bpm": 74
+    },
+    {
+      "elapsed_s": 46.578,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 85,
+      "heart_rate_bpm": 74
+    },
+    {
+      "elapsed_s": 47.547,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 75,
+      "heart_rate_bpm": 73
+    },
+    {
+      "elapsed_s": 48.532,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 72
+    },
+    {
+      "elapsed_s": 49.594,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 71
+    },
+    {
+      "elapsed_s": 50.578,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 71
+    },
+    {
+      "elapsed_s": 51.547,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 70
+    },
+    {
+      "elapsed_s": 52.532,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 70
+    },
+    {
+      "elapsed_s": 53.594,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 70
+    },
+    {
+      "elapsed_s": 54.578,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 69
+    },
+    {
+      "elapsed_s": 55.547,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 69
+    },
+    {
+      "elapsed_s": 56.516,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 69
+    },
+    {
+      "elapsed_s": 57.594,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 69
+    },
+    {
+      "elapsed_s": 58.563,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 69
+    },
+    {
+      "elapsed_s": 59.547,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 70
+    },
+    {
+      "elapsed_s": 60.516,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 71
+    },
+    {
+      "elapsed_s": 61.5,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 71
+    },
+    {
+      "elapsed_s": 62.563,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 71
+    },
+    {
+      "elapsed_s": 63.547,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 72
+    },
+    {
+      "elapsed_s": 64.516,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 72
+    },
+    {
+      "elapsed_s": 65.594,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 74
+    },
+    {
+      "elapsed_s": 66.563,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 76
+    },
+    {
+      "elapsed_s": 67.547,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 77
+    },
+    {
+      "elapsed_s": 68.516,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 78
+    },
+    {
+      "elapsed_s": 69.594,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 78
+    },
+    {
+      "elapsed_s": 70.563,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 79
+    },
+    {
+      "elapsed_s": 71.532,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 80
+    },
+    {
+      "elapsed_s": 72.61,
+      "power_w": 0.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 80
+    },
+    {
+      "elapsed_s": 73.578,
+      "power_w": 2.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 80
+    },
+    {
+      "elapsed_s": 74.563,
+      "power_w": 8.0,
+      "cadence_rpm": 0.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 80
+    },
+    {
+      "elapsed_s": 75.532,
+      "power_w": 16.0,
+      "cadence_rpm": 1.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 80
+    },
+    {
+      "elapsed_s": 76.516,
+      "power_w": 32.0,
+      "cadence_rpm": 1.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 80
+    },
+    {
+      "elapsed_s": 77.578,
+      "power_w": 44.0,
+      "cadence_rpm": 31.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 80
+    },
+    {
+      "elapsed_s": 78.563,
+      "power_w": 55.0,
+      "cadence_rpm": 34.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 79.532,
+      "power_w": 68.0,
+      "cadence_rpm": 37.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 80.61,
+      "power_w": 71.0,
+      "cadence_rpm": 41.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 81.578,
+      "power_w": 71.0,
+      "cadence_rpm": 45.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 82.547,
+      "power_w": 71.0,
+      "cadence_rpm": 47.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 83.532,
+      "power_w": 70.0,
+      "cadence_rpm": 49.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 84.61,
+      "power_w": 70.0,
+      "cadence_rpm": 51.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 85.672,
+      "power_w": 71.0,
+      "cadence_rpm": 52.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 86.547,
+      "power_w": 71.0,
+      "cadence_rpm": 53.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 87.532,
+      "power_w": 70.0,
+      "cadence_rpm": 54.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 88.594,
+      "power_w": 69.0,
+      "cadence_rpm": 56.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 89.578,
+      "power_w": 69.0,
+      "cadence_rpm": 56.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 90.547,
+      "power_w": 69.0,
+      "cadence_rpm": 56.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 80
+    },
+    {
+      "elapsed_s": 91.532,
+      "power_w": 70.0,
+      "cadence_rpm": 56.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 80
+    },
+    {
+      "elapsed_s": 92.594,
+      "power_w": 70.0,
+      "cadence_rpm": 57.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 80
+    },
+    {
+      "elapsed_s": 93.578,
+      "power_w": 69.0,
+      "cadence_rpm": 56.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 80
+    },
+    {
+      "elapsed_s": 94.547,
+      "power_w": 70.0,
+      "cadence_rpm": 57.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 80
+    },
+    {
+      "elapsed_s": 95.516,
+      "power_w": 70.0,
+      "cadence_rpm": 57.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 80
+    },
+    {
+      "elapsed_s": 96.594,
+      "power_w": 70.0,
+      "cadence_rpm": 58.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 80
+    },
+    {
+      "elapsed_s": 97.563,
+      "power_w": 70.0,
+      "cadence_rpm": 58.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 98.547,
+      "power_w": 69.0,
+      "cadence_rpm": 58.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 99.516,
+      "power_w": 69.0,
+      "cadence_rpm": 59.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 82
+    },
+    {
+      "elapsed_s": 100.594,
+      "power_w": 69.0,
+      "cadence_rpm": 59.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 85
+    },
+    {
+      "elapsed_s": 101.563,
+      "power_w": 69.0,
+      "cadence_rpm": 60.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 86
+    },
+    {
+      "elapsed_s": 102.547,
+      "power_w": 70.0,
+      "cadence_rpm": 60.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 87
+    },
+    {
+      "elapsed_s": 103.516,
+      "power_w": 70.0,
+      "cadence_rpm": 61.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 88
+    },
+    {
+      "elapsed_s": 104.688,
+      "power_w": 70.0,
+      "cadence_rpm": 60.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 89
+    },
+    {
+      "elapsed_s": 105.563,
+      "power_w": 69.0,
+      "cadence_rpm": 60.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 88
+    },
+    {
+      "elapsed_s": 106.547,
+      "power_w": 70.0,
+      "cadence_rpm": 60.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 82
+    },
+    {
+      "elapsed_s": 107.516,
+      "power_w": 70.0,
+      "cadence_rpm": 60.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 80
+    },
+    {
+      "elapsed_s": 108.594,
+      "power_w": 70.0,
+      "cadence_rpm": 61.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 79
+    },
+    {
+      "elapsed_s": 109.563,
+      "power_w": 70.0,
+      "cadence_rpm": 60.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 78
+    },
+    {
+      "elapsed_s": 110.532,
+      "power_w": 74.0,
+      "cadence_rpm": 61.0,
+      "target_power_w": 80,
+      "heart_rate_bpm": 77
+    },
+    {
+      "elapsed_s": 111.516,
+      "power_w": 81.0,
+      "cadence_rpm": 61.0,
+      "target_power_w": 85,
+      "heart_rate_bpm": 77
+    },
+    {
+      "elapsed_s": 112.578,
+      "power_w": 85.0,
+      "cadence_rpm": 61.0,
+      "target_power_w": 95,
+      "heart_rate_bpm": 77
+    },
+    {
+      "elapsed_s": 113.563,
+      "power_w": 92.0,
+      "cadence_rpm": 62.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 77
+    },
+    {
+      "elapsed_s": 114.532,
+      "power_w": 98.0,
+      "cadence_rpm": 62.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 78
+    },
+    {
+      "elapsed_s": 115.516,
+      "power_w": 99.0,
+      "cadence_rpm": 62.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 82
+    },
+    {
+      "elapsed_s": 116.578,
+      "power_w": 100.0,
+      "cadence_rpm": 62.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 85
+    },
+    {
+      "elapsed_s": 117.563,
+      "power_w": 100.0,
+      "cadence_rpm": 62.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 87
+    },
+    {
+      "elapsed_s": 118.532,
+      "power_w": 99.0,
+      "cadence_rpm": 63.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 88
+    },
+    {
+      "elapsed_s": 119.61,
+      "power_w": 99.0,
+      "cadence_rpm": 63.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 89
+    },
+    {
+      "elapsed_s": 120.578,
+      "power_w": 100.0,
+      "cadence_rpm": 63.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 90
+    },
+    {
+      "elapsed_s": 121.547,
+      "power_w": 99.0,
+      "cadence_rpm": 63.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 90
+    },
+    {
+      "elapsed_s": 122.532,
+      "power_w": 99.0,
+      "cadence_rpm": 63.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 91
+    },
+    {
+      "elapsed_s": 123.61,
+      "power_w": 99.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 92
+    },
+    {
+      "elapsed_s": 124.578,
+      "power_w": 100.0,
+      "cadence_rpm": 63.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 92
+    },
+    {
+      "elapsed_s": 125.547,
+      "power_w": 100.0,
+      "cadence_rpm": 63.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 92
+    },
+    {
+      "elapsed_s": 126.532,
+      "power_w": 99.0,
+      "cadence_rpm": 63.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 92
+    },
+    {
+      "elapsed_s": 127.594,
+      "power_w": 100.0,
+      "cadence_rpm": 63.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 93
+    },
+    {
+      "elapsed_s": 128.578,
+      "power_w": 99.0,
+      "cadence_rpm": 63.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 94
+    },
+    {
+      "elapsed_s": 129.547,
+      "power_w": 100.0,
+      "cadence_rpm": 63.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 93
+    },
+    {
+      "elapsed_s": 130.532,
+      "power_w": 101.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 93
+    },
+    {
+      "elapsed_s": 131.594,
+      "power_w": 101.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 91
+    },
+    {
+      "elapsed_s": 132.578,
+      "power_w": 105.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 110,
+      "heart_rate_bpm": 88
+    },
+    {
+      "elapsed_s": 133.547,
+      "power_w": 110.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 110,
+      "heart_rate_bpm": 89
+    },
+    {
+      "elapsed_s": 134.516,
+      "power_w": 113.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 91
+    },
+    {
+      "elapsed_s": 135.594,
+      "power_w": 120.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 95
+    },
+    {
+      "elapsed_s": 136.563,
+      "power_w": 120.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 137.547,
+      "power_w": 120.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 99
+    },
+    {
+      "elapsed_s": 138.844,
+      "power_w": 119.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 139.766,
+      "power_w": 119.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 141.032,
+      "power_w": 119.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 97
+    },
+    {
+      "elapsed_s": 142.375,
+      "power_w": 119.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 97
+    },
+    {
+      "elapsed_s": 143.203,
+      "power_w": 119.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 97
+    },
+    {
+      "elapsed_s": 143.594,
+      "power_w": 119.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 144.703,
+      "power_w": 119.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 145.797,
+      "power_w": 120.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 146.516,
+      "power_w": 119.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 147.594,
+      "power_w": 119.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 99
+    },
+    {
+      "elapsed_s": 148.563,
+      "power_w": 120.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 99
+    },
+    {
+      "elapsed_s": 149.766,
+      "power_w": 120.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 150.516,
+      "power_w": 120.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 151.594,
+      "power_w": 120.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 152.672,
+      "power_w": 120.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 153.547,
+      "power_w": 120.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 154.61,
+      "power_w": 120.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 99
+    },
+    {
+      "elapsed_s": 155.594,
+      "power_w": 120.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 156.672,
+      "power_w": 120.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 157.578,
+      "power_w": 120.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 158.516,
+      "power_w": 120.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 159.641,
+      "power_w": 119.0,
+      "cadence_rpm": 67.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 160.563,
+      "power_w": 119.0,
+      "cadence_rpm": 67.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 161.61,
+      "power_w": 120.0,
+      "cadence_rpm": 67.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 162.61,
+      "power_w": 119.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 163.641,
+      "power_w": 120.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 96
+    },
+    {
+      "elapsed_s": 164.578,
+      "power_w": 120.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 96
+    },
+    {
+      "elapsed_s": 165.844,
+      "power_w": 120.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 96
+    },
+    {
+      "elapsed_s": 166.516,
+      "power_w": 120.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 97
+    },
+    {
+      "elapsed_s": 167.578,
+      "power_w": 121.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 97
+    },
+    {
+      "elapsed_s": 168.61,
+      "power_w": 119.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 169.532,
+      "power_w": 120.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 170.61,
+      "power_w": 120.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 171.578,
+      "power_w": 119.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 172.547,
+      "power_w": 120.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 173.532,
+      "power_w": 119.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 174.641,
+      "power_w": 120.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 130,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 175.578,
+      "power_w": 128.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 140,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 176.547,
+      "power_w": 136.0,
+      "cadence_rpm": 67.0,
+      "target_power_w": 145,
+      "heart_rate_bpm": 97
+    },
+    {
+      "elapsed_s": 177.532,
+      "power_w": 143.0,
+      "cadence_rpm": 67.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 97
+    },
+    {
+      "elapsed_s": 178.594,
+      "power_w": 149.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 96
+    },
+    {
+      "elapsed_s": 179.563,
+      "power_w": 149.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 96
+    },
+    {
+      "elapsed_s": 180.547,
+      "power_w": 149.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 96
+    },
+    {
+      "elapsed_s": 181.516,
+      "power_w": 150.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 96
+    },
+    {
+      "elapsed_s": 182.657,
+      "power_w": 149.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 96
+    },
+    {
+      "elapsed_s": 183.594,
+      "power_w": 148.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 96
+    },
+    {
+      "elapsed_s": 184.657,
+      "power_w": 150.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 96
+    },
+    {
+      "elapsed_s": 185.532,
+      "power_w": 150.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 96
+    },
+    {
+      "elapsed_s": 186.594,
+      "power_w": 149.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 96
+    },
+    {
+      "elapsed_s": 187.563,
+      "power_w": 150.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 97
+    },
+    {
+      "elapsed_s": 188.735,
+      "power_w": 151.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 189.516,
+      "power_w": 150.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 190.578,
+      "power_w": 150.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 99
+    },
+    {
+      "elapsed_s": 191.578,
+      "power_w": 151.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 99
+    },
+    {
+      "elapsed_s": 192.532,
+      "power_w": 149.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 193.516,
+      "power_w": 149.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 194.578,
+      "power_w": 149.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 99
+    },
+    {
+      "elapsed_s": 195.563,
+      "power_w": 149.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 196.532,
+      "power_w": 150.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 198.016,
+      "power_w": 150.0,
+      "cadence_rpm": 67.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 198.766,
+      "power_w": 149.0,
+      "cadence_rpm": 67.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 105
+    },
+    {
+      "elapsed_s": 199.938,
+      "power_w": 149.0,
+      "cadence_rpm": 68.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 110
+    },
+    {
+      "elapsed_s": 200.532,
+      "power_w": 150.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 109
+    },
+    {
+      "elapsed_s": 201.516,
+      "power_w": 150.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 108
+    },
+    {
+      "elapsed_s": 202.578,
+      "power_w": 149.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 108
+    },
+    {
+      "elapsed_s": 203.547,
+      "power_w": 149.0,
+      "cadence_rpm": 67.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 108
+    },
+    {
+      "elapsed_s": 204.547,
+      "power_w": 149.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 107
+    },
+    {
+      "elapsed_s": 205.5,
+      "power_w": 150.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 107
+    },
+    {
+      "elapsed_s": 206.578,
+      "power_w": 150.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 106
+    },
+    {
+      "elapsed_s": 207.547,
+      "power_w": 151.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 105
+    },
+    {
+      "elapsed_s": 208.532,
+      "power_w": 149.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 105
+    },
+    {
+      "elapsed_s": 209.61,
+      "power_w": 150.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 104
+    },
+    {
+      "elapsed_s": 210.578,
+      "power_w": 151.0,
+      "cadence_rpm": 64.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 105
+    },
+    {
+      "elapsed_s": 211.547,
+      "power_w": 152.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 105
+    },
+    {
+      "elapsed_s": 212.532,
+      "power_w": 152.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 105
+    },
+    {
+      "elapsed_s": 213.594,
+      "power_w": 151.0,
+      "cadence_rpm": 67.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 104
+    },
+    {
+      "elapsed_s": 214.563,
+      "power_w": 149.0,
+      "cadence_rpm": 68.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 215.547,
+      "power_w": 150.0,
+      "cadence_rpm": 68.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 97
+    },
+    {
+      "elapsed_s": 216.516,
+      "power_w": 150.0,
+      "cadence_rpm": 68.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 96
+    },
+    {
+      "elapsed_s": 217.782,
+      "power_w": 149.0,
+      "cadence_rpm": 68.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 93
+    },
+    {
+      "elapsed_s": 218.563,
+      "power_w": 150.0,
+      "cadence_rpm": 68.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 92
+    },
+    {
+      "elapsed_s": 219.547,
+      "power_w": 149.0,
+      "cadence_rpm": 68.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 91
+    },
+    {
+      "elapsed_s": 220.516,
+      "power_w": 150.0,
+      "cadence_rpm": 68.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 91
+    },
+    {
+      "elapsed_s": 221.594,
+      "power_w": 149.0,
+      "cadence_rpm": 68.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 92
+    },
+    {
+      "elapsed_s": 222.563,
+      "power_w": 148.0,
+      "cadence_rpm": 68.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 93
+    },
+    {
+      "elapsed_s": 223.547,
+      "power_w": 149.0,
+      "cadence_rpm": 67.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 93
+    },
+    {
+      "elapsed_s": 224.516,
+      "power_w": 150.0,
+      "cadence_rpm": 67.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 90
+    },
+    {
+      "elapsed_s": 225.594,
+      "power_w": 150.0,
+      "cadence_rpm": 67.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 86
+    },
+    {
+      "elapsed_s": 226.563,
+      "power_w": 148.0,
+      "cadence_rpm": 67.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 84
+    },
+    {
+      "elapsed_s": 227.532,
+      "power_w": 150.0,
+      "cadence_rpm": 67.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 82
+    },
+    {
+      "elapsed_s": 228.516,
+      "power_w": 149.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 82
+    },
+    {
+      "elapsed_s": 229.578,
+      "power_w": 149.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 230.563,
+      "power_w": 149.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 231.532,
+      "power_w": 149.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 232.516,
+      "power_w": 150.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 233.578,
+      "power_w": 149.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 82
+    },
+    {
+      "elapsed_s": 234.563,
+      "power_w": 149.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 235.532,
+      "power_w": 151.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 150,
+      "heart_rate_bpm": 81
+    },
+    {
+      "elapsed_s": 236.61,
+      "power_w": 150.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 135,
+      "heart_rate_bpm": 82
+    },
+    {
+      "elapsed_s": 237.578,
+      "power_w": 141.0,
+      "cadence_rpm": 65.0,
+      "target_power_w": 120,
+      "heart_rate_bpm": 84
+    },
+    {
+      "elapsed_s": 238.563,
+      "power_w": 125.0,
+      "cadence_rpm": 66.0,
+      "target_power_w": 110,
+      "heart_rate_bpm": 84
+    },
+    {
+      "elapsed_s": 239.563,
+      "power_w": 111.0,
+      "cadence_rpm": 68.0,
+      "target_power_w": 100,
+      "heart_rate_bpm": 85
+    },
+    {
+      "elapsed_s": 240.61,
+      "power_w": 100.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 90,
+      "heart_rate_bpm": 86
+    },
+    {
+      "elapsed_s": 241.578,
+      "power_w": 93.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 85,
+      "heart_rate_bpm": 86
+    },
+    {
+      "elapsed_s": 242.547,
+      "power_w": 85.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 80,
+      "heart_rate_bpm": 85
+    },
+    {
+      "elapsed_s": 243.532,
+      "power_w": 76.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 84
+    },
+    {
+      "elapsed_s": 244.594,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 83
+    },
+    {
+      "elapsed_s": 245.578,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 84
+    },
+    {
+      "elapsed_s": 246.547,
+      "power_w": 69.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 85
+    },
+    {
+      "elapsed_s": 247.532,
+      "power_w": 70.0,
+      "cadence_rpm": 69.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 85
+    },
+    {
+      "elapsed_s": 248.61,
+      "power_w": 70.0,
+      "cadence_rpm": 69.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 85
+    },
+    {
+      "elapsed_s": 249.578,
+      "power_w": 70.0,
+      "cadence_rpm": 69.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 86
+    },
+    {
+      "elapsed_s": 250.547,
+      "power_w": 71.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 85
+    },
+    {
+      "elapsed_s": 251.516,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 88
+    },
+    {
+      "elapsed_s": 252.594,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 97
+    },
+    {
+      "elapsed_s": 253.563,
+      "power_w": 69.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 254.547,
+      "power_w": 69.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 255.516,
+      "power_w": 69.0,
+      "cadence_rpm": 71.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 256.594,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 257.578,
+      "power_w": 69.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 258.547,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 259.516,
+      "power_w": 69.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 260.594,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 261.563,
+      "power_w": 69.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 262.547,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 263.516,
+      "power_w": 69.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 264.594,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 103
+    },
+    {
+      "elapsed_s": 265.563,
+      "power_w": 69.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 103
+    },
+    {
+      "elapsed_s": 266.625,
+      "power_w": 69.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 267.516,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 268.688,
+      "power_w": 69.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 269.563,
+      "power_w": 69.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 270.532,
+      "power_w": 70.0,
+      "cadence_rpm": 71.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 271.516,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 272.578,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 273.563,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 274.532,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 275.61,
+      "power_w": 70.0,
+      "cadence_rpm": 71.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 276.578,
+      "power_w": 69.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 277.547,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 102
+    },
+    {
+      "elapsed_s": 278.532,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 279.594,
+      "power_w": 70.0,
+      "cadence_rpm": 71.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 280.578,
+      "power_w": 69.0,
+      "cadence_rpm": 72.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 281.547,
+      "power_w": 69.0,
+      "cadence_rpm": 73.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 282.532,
+      "power_w": 70.0,
+      "cadence_rpm": 73.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 283.594,
+      "power_w": 70.0,
+      "cadence_rpm": 73.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 101
+    },
+    {
+      "elapsed_s": 284.578,
+      "power_w": 69.0,
+      "cadence_rpm": 73.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 285.547,
+      "power_w": 70.0,
+      "cadence_rpm": 73.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 286.516,
+      "power_w": 69.0,
+      "cadence_rpm": 73.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 100
+    },
+    {
+      "elapsed_s": 287.594,
+      "power_w": 68.0,
+      "cadence_rpm": 72.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 99
+    },
+    {
+      "elapsed_s": 288.578,
+      "power_w": 70.0,
+      "cadence_rpm": 72.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 289.547,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 98
+    },
+    {
+      "elapsed_s": 290.516,
+      "power_w": 71.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 97
+    },
+    {
+      "elapsed_s": 291.594,
+      "power_w": 70.0,
+      "cadence_rpm": 71.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 96
+    },
+    {
+      "elapsed_s": 292.563,
+      "power_w": 69.0,
+      "cadence_rpm": 72.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 96
+    },
+    {
+      "elapsed_s": 293.547,
+      "power_w": 69.0,
+      "cadence_rpm": 73.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 95
+    },
+    {
+      "elapsed_s": 294.516,
+      "power_w": 69.0,
+      "cadence_rpm": 73.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 94
+    },
+    {
+      "elapsed_s": 295.594,
+      "power_w": 69.0,
+      "cadence_rpm": 72.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 94
+    },
+    {
+      "elapsed_s": 296.563,
+      "power_w": 70.0,
+      "cadence_rpm": 71.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 95
+    },
+    {
+      "elapsed_s": 297.547,
+      "power_w": 69.0,
+      "cadence_rpm": 71.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 95
+    },
+    {
+      "elapsed_s": 298.516,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 95
+    },
+    {
+      "elapsed_s": 299.594,
+      "power_w": 70.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 95
+    },
+    {
+      "elapsed_s": 300.563,
+      "power_w": 69.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 93
+    },
+    {
+      "elapsed_s": 301.532,
+      "power_w": 35.0,
+      "cadence_rpm": 70.0,
+      "target_power_w": 70,
+      "heart_rate_bpm": 92
+    }
+  ]
+}

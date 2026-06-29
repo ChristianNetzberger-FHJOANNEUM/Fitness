@@ -2,8 +2,12 @@
 
 from __future__ import annotations
 
-from nicegui import Client
+import logging
+
+from nicegui import Client, ui
 from nicegui.element import Element
+
+_logger = logging.getLogger(__name__)
 
 
 def client_alive(element: Element | None) -> bool:
@@ -13,6 +17,16 @@ def client_alive(element: Element | None) -> bool:
         return element.client.id in Client.instances
     except Exception:
         return False
+
+
+def safe_notify(message: str, *, type: str = "info", timeout: int | None = None) -> None:
+    try:
+        if timeout is None:
+            ui.notify(message, type=type)
+        else:
+            ui.notify(message, type=type, timeout=timeout)
+    except Exception:
+        _logger.warning("ui.notify fehlgeschlagen: %s", message, exc_info=True)
 
 
 def with_alive_client(element: Element | None):

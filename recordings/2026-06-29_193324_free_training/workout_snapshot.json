@@ -1,0 +1,71 @@
+{
+  "name": "frei_20260629_1938",
+  "description": "Aus freiem Training erzeugt",
+  "steps": [
+    {
+      "duration_s": 39,
+      "target_power_w": 150,
+      "label": "150 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 145,
+      "label": "145 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 95,
+      "label": "95 W"
+    },
+    {
+      "duration_s": 59,
+      "target_power_w": 70,
+      "label": "70 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 80,
+      "label": "80 W"
+    },
+    {
+      "duration_s": 16,
+      "target_power_w": 100,
+      "label": "100 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 110,
+      "label": "110 W"
+    },
+    {
+      "duration_s": 36,
+      "target_power_w": 120,
+      "label": "120 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 130,
+      "label": "130 W"
+    },
+    {
+      "duration_s": 56,
+      "target_power_w": 150,
+      "label": "150 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 135,
+      "label": "135 W"
+    },
+    {
+      "duration_s": 6,
+      "target_power_w": 80,
+      "label": "80 W"
+    },
+    {
+      "duration_s": 53,
+      "target_power_w": 70,
+      "label": "70 W"
+    }
+  ]
+}

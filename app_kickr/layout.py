@@ -15,6 +15,9 @@ def build_ui(
     on_scan,
     on_connect,
     on_disconnect,
+    on_scan_hr,
+    on_connect_hr,
+    on_disconnect_hr,
     on_set_erg,
     on_stop_trainer,
     on_free_start,
@@ -53,6 +56,18 @@ def build_ui(
                 ui.label("Kadenz (rpm)").classes("text-caption")
                 cadence_label = ui.label("—").classes("text-h4")
 
+            with ui.card().classes("w-64"):
+                ui.label("Herzfrequenz").classes("text-h6")
+                ui.label("BLE-Brustgurt (z. B. Polar H10)").classes("text-caption")
+                scan_hr_btn = ui.button("HF scannen", on_click=on_scan_hr).props("dense")
+                hr_select = ui.select({}, label="HF-Sensor").classes("w-full")
+                with ui.row().classes("q-gutter-sm"):
+                    connect_hr_btn = ui.button("Verbinden", on_click=on_connect_hr).props("dense")
+                    ui.button("Trennen", on_click=on_disconnect_hr).props("dense flat")
+                ui.label("HF (bpm)").classes("text-caption q-mt-xs")
+                hr_label = ui.label("—").classes("text-h4")
+                hr_contact_label = ui.label("").classes("text-caption")
+
             with ui.card().classes("w-56"):
                 ui.label("Manuell ERG").classes("text-h6")
                 ui.label(
@@ -68,6 +83,8 @@ def build_ui(
             power_plot.with_legend(["Leistung (W)"])
             cadence_plot = ui.line_plot(n=1, limit=1200, figsize=(11, 2.2), close=False).classes("w-full")
             cadence_plot.with_legend(["Kadenz (rpm)"])
+            hr_plot = ui.line_plot(n=1, limit=1200, figsize=(11, 2.2), close=False).classes("w-full")
+            hr_plot.with_legend(["HF (bpm)"])
 
         with ui.expansion("Freies Training", icon="directions_bike").classes("w-full shadow-1"):
             with ui.row().classes("w-full items-start q-col-gutter-md no-wrap"):
@@ -79,7 +96,6 @@ def build_ui(
                             ui.label("Watt").classes("text-caption")
                         with ui.column():
                             free_status = ui.label("Bereit").classes("text-body1")
-                            free_elapsed_label = ui.label("").classes("text-body2")
                         free_step = ui.number("Stufe (W)", value=5, min=1, max=50, step=1).classes("w-28")
                     with ui.row().classes("w-full items-center q-gutter-md q-mt-sm"):
                         ui.button("Start", on_click=on_free_start).props("color=primary")
@@ -87,6 +103,12 @@ def build_ui(
                         ui.button("Stop", on_click=on_free_stop).props("outline color=negative")
                         ui.button("▼", on_click=on_free_power_down).props("outline dense").classes("text-h6")
                         ui.button("▲", on_click=on_free_power_up).props("outline dense").classes("text-h6")
+                with ui.column().classes("items-center q-px-sm shrink-0"):
+                    ui.label("Zeit").classes("text-caption")
+                    free_time_clock = ui.label("00:00:00").classes("text-weight-bold").style(
+                        "font-size: 2.75rem; line-height: 1.1; font-family: ui-monospace, monospace; "
+                        "font-variant-numeric: tabular-nums; letter-spacing: 0.04em;"
+                    )
                 with ui.column().classes("w-72 shrink-0"):
                     ui.label("Tasten / Fernbedienung").classes("text-subtitle2")
                     ui.label(
@@ -171,15 +193,21 @@ def build_ui(
         "scan_btn": scan_btn,
         "connect_btn": connect_btn,
         "device_select": device_select,
+        "scan_hr_btn": scan_hr_btn,
+        "connect_hr_btn": connect_hr_btn,
+        "hr_select": hr_select,
+        "hr_label": hr_label,
+        "hr_contact_label": hr_contact_label,
         "power_label": power_label,
         "workout_target_label": workout_target_label,
         "cadence_label": cadence_label,
         "target_power": target_power,
         "power_plot": power_plot,
         "cadence_plot": cadence_plot,
+        "hr_plot": hr_plot,
         "free_target_label": free_target_label,
         "free_status": free_status,
-        "free_elapsed_label": free_elapsed_label,
+        "free_time_clock": free_time_clock,
         "free_step": free_step,
         "free_pause_btn": free_pause_btn,
         "free_key_test": free_key_test,
